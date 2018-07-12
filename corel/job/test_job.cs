@@ -15,7 +15,10 @@ namespace corel
             IJob jo = new JobTest(jc);
             IJobHandle handle = new JobHandle(jo);
 
-            /////////////////////////////////////////////////////
+            Console.WriteLine("Enter to stop all JOB...");
+            Console.ReadLine();
+            jc.f_removeAll();
+
             Console.WriteLine("Enter to exit...");
             Console.ReadLine();
         }
