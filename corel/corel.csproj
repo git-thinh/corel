@@ -58,10 +58,12 @@
     <Compile Include="api\ListThreadSafe.cs" />
     <Compile Include="api\Tracer.cs" />
     <Compile Include="app.cs" />
+    <Compile Include="job\jobs\JobFileHttp.cs" />
     <Compile Include="job\jobs\JobMessage.cs" />
     <Compile Include="job\jobs\JobTest.cs" />
     <Compile Include="job\system\JobFactory.cs" />
     <Compile Include="job\system\JobHandle.cs" />
+    <Compile Include="job\system\JobInfo.cs" />
     <Compile Include="job\system\JobMonitor.cs" />
     <Compile Include="job\system\JobWorker.cs" />
     <Compile Include="job\system\JOB_CONST.cs" />

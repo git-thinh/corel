@@ -67,15 +67,19 @@ namespace corel
             }), null, 100, 100);
         }
         
-        public override void f_init()
+        public override void f_INIT()
         {
-            Tracer.WriteLine("J{0} JOB_MESSAGE: SIGNAL -> INITED", this.f_getId());
+            Tracer.WriteLine("J{0} {1} -> INITED", this.f_getId(), this.Type);
         }
-        public override void f_processMessageCallbackResult(Message m)
+        public override void f_STOP()
+        {
+            Tracer.WriteLine("J{0} {1} -> STOPED", this.f_getId(), this.Type);
+        }
+        public override void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m)
         {
             Thread.Sleep(1000);
         }
-        public override Message f_processMessage(Message m)
+        public override Message f_PROCESS_MESSAGE(Message m)
         {
             //Message m = null;
             //m = this.Messages.Dequeue(null);

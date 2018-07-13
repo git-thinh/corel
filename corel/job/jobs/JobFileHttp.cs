@@ -3,85 +3,68 @@ using System.Threading;
 using System.Linq;
 using NHttp;
 using System.IO;
+using System.Collections.Concurrent;
+using Newtonsoft.Json;
 
 namespace corel
 {
-    public class JobFileHttp : JobBase
+    public class JobFileHttp : JobWorker
     {
-        readonly DictionaryThreadSafe<string, string> fileData;
-        readonly QueueThreadSafe<Message> msg;
+        int Port = 3456;
+        readonly HttpServer server;
+        readonly ConcurrentDictionary<string, string> fileData;
 
-        public JobFileHttp(IJobAction jobAction) : base(JOB_TYPE.FILE_HTTP_CACHE, jobAction)
+        public JobFileHttp(IJobContext jobContext) : base(jobContext, JOB_TYPE.FILE_HTTP_CACHE)
         {
-            msg = new QueueThreadSafe<Message>();
-            fileData = new DictionaryThreadSafe<string, string>();
+            fileData = new ConcurrentDictionary<string, string>();
             server = new HttpServer();
+            server.EndPoint.Port = this.Port;
             server.RequestReceived += f_server_onRequestReceived;
         }
-
-        private void f_server_onRequestReceived(object sender, HttpRequestEventArgs e)
+        void f_server_onRequestReceived(object sender, HttpRequestEventArgs e)
         {
-            string file_name = e.Request.QueryString["file_name"];
-            if (!string.IsNullOrEmpty(file_name))
-            {
-                using (var writer = new StreamWriter(e.Response.OutputStream))
-                {
-                    writer.Write("Hello world!");
-                }
-            }
+            if (e.Request.Url.LocalPath == "/favicon.ico") { e.Response.OutputStream.Close(); return; }
+
+            //string file_name = e.Request.QueryString["file_name"];
+            //if (!string.IsNullOrEmpty(file_name))
+            //{
+            //    using (var writer = new StreamWriter(e.Response.OutputStream))
+            //    {
+            //        writer.Write("Hello world!");
+            //    }
+            //}
+
+            string data = @"{""key"":""Tiếng Việt""}";
+
+            data = JsonConvert.SerializeObject(this.JobContext.f_getAllJobs());
+
+            e.Response.ContentType = "application/json; charset=utf-8";
+            using (var writer = new StreamWriter(e.Response.OutputStream))
+                writer.Write(data);
         }
 
-        public override int f_getPort() { return Port; }
-        public override bool f_checkKey(object key) { return false; }
-        public override bool f_setData(string key, object data) { return false; }
-
-        public override void f_receiveMessage(Message m)
+        public override void f_INIT()
         {
-            msg.Enqueue(m);
-        }
-
-        int Port = 0;
-        readonly HttpServer server;
-        private void f_Init()
-        {
+            Tracer.WriteLine("J{0} {1} -> INITED", this.f_getId(), this.Type);
             // Tracer.WriteLine("J{0} executes on thread {1}: INIT ...");
             //Process.Start(String.Format("http://{0}/", server.EndPoint));
             server.Start();
             Port = server.EndPoint.Port;
             Tracer.WriteLine(String.Format("http://{0}/", server.EndPoint));
         }
-
-        private volatile bool _inited = false;
-        public void f_stopJob()
+        public override void f_STOP()
         {
             fileData.Clear();
             server.Stop();
             server.Dispose();
-
-            //jobInfo.f_stopJob();
+            Tracer.WriteLine("J{0} {1} -> STOPED", this.f_getId(), this.Type);
         }
-
-        private JobHandle jobInfo;
-        public void f_runLoop(object state, bool timedOut)
+        public override void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m)
         {
-            if (!_inited)
-            {
-                jobInfo = (JobHandle)state;
-                _inited = true;
-                f_Init();
-                return;
-            }            
-            if (!timedOut)
-            {
-                // Tracer.WriteLine("J{0} executes on thread {1}: SIGNAL -> STOP ...", Id, Thread.CurrentThread.GetHashCode().ToString());
-                f_stopJob();
-                return;
-            }
-
-            Tracer.WriteLine("J{0} executes on thread {1}:DO SOMETHING ...", this.f_getId(), Thread.CurrentThread.GetHashCode().ToString());
-            // Do something ...
-
         }
-
+        public override Message f_PROCESS_MESSAGE(Message m)
+        {
+            return m;
+        }
     }
 }

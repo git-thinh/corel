@@ -16,3 +16,9 @@ build/corel.vshost.exe
 build/corel.pdb
 build/corel.exe
 .vs/corel/v14/.suo
+.vs/corel/v15/Server/sqlite3/storage.ide-wal
+.vs/corel/v15/Server/sqlite3/storage.ide-shm
+.vs/corel/v15/Server/sqlite3/storage.ide
+.vs/corel/v15/Server/sqlite3/db.lock
+.vs/corel/v15/.suo
+corel/obj/Debug/corel.csproj.CoreCompileInputs.cache

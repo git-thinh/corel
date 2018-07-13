@@ -1,3 +1,59 @@
+bois
+BOIS (Binary Object Indexed Serialization)
+
+Salar.Bois is a fast, light and powerful binary serializer for .NET Framework. With Bois you can serialize your existing objects with almost no change.
+
+homeissuesdiscussions
+Salar.Bois is moved to github: https://github.com/salarcode/Bois
+
+Salar.Bois is a high compact ratio, fast and powerful binary serializer for .NET Framework.
+With Bois you can serialize your existing objects with almost no change.
+
+BOIS can serialize almost anything as long as they satisfy these conditions.
+
+* Having parameter-less public constructor.
+* Polymorphous properties have limited support, which only base type mentioned in the property will be serialized/deserialized.
+* Collections/Lists should be generic and implement either of IList<> or IDictionary<>
+
+Some classes have special support, which are listed below:
+
+* NameValueCollection
+* Version, Color and Guid
+
+NuGet Package
+PM> Install-Package Salar.Bois
+
+
+
+Easy to use
+Just add the reference to your project and voila, you can now use it.
+
+How to serialize an object:
+
+var boisSerializer = new BoisSerializer();
+using (var mem = new MemoryStream())
+{
+	boisSerializer.Serialize(this, mem);
+
+	return mem.ToArray();
+}
+How to deserialize an object:
+
+var boisSerializer = new BoisSerializer();
+return boisSerializer.Deserialize<SampleObject>(dataStream);
+Features in progress
+Some features are in progress and will be available as soon as they're completed:
+
+* Use compacted serialize method for more primitive types.
+* An option to control depth of object serialization.
+* Embed cache object inside the serializer.
+* Support ISet<> for .Net4
+
+
+
+
+
+
 BUG:	Null values in struct.
 BUG:	Struct object CreateInstance
 BUG:	Getter & Setter for structs

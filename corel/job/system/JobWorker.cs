@@ -53,13 +53,15 @@ namespace corel
         public void f_stop()
         {
             this.Status = 4; /* 4: stop */
-            System.Tracer.WriteLine("J{0} BASE: STOP ...", this.Id);
+            System.Tracer.WriteLine("J{0} -> STOP", this.Id);
+            this.f_STOP();
             this.Handle.f_actionJobCallback();
         }
 
-        public virtual void f_init() { }
-        public virtual void f_processMessageCallbackResult(Message m) { }
-        public virtual Message f_processMessage(Message m) { return m; }
+        public virtual void f_STOP() { }
+        public virtual void f_INIT() { }
+        public virtual void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m) { }
+        public virtual Message f_PROCESS_MESSAGE(Message m) { return m; }
 
         delegate Message ProcessMessage(Message m);
         void f_callbackProcessMessage(IAsyncResult asyncRes)
@@ -67,13 +69,14 @@ namespace corel
             AsyncResult ares = (AsyncResult)asyncRes;
             ProcessMessage delg = (ProcessMessage)ares.AsyncDelegate;
             Message result = delg.EndInvoke(asyncRes);
-            this.f_processMessageCallbackResult(result);
+            this.f_PROCESS_MESSAGE_CALLBACK_RESULT(result);
             //Thread.Sleep(1000);
             f_runLoop(this.Handle);
         }
 
         void f_sleepAfterLoop(IJobHandle handle)
         {
+            //Tracer.WriteLine("J{0} WAITING ...", this.Id);
             Thread.Sleep(JOB_CONST.JOB_TIMEOUT_RUN);
             f_runLoop(handle);
         }
@@ -81,7 +84,7 @@ namespace corel
         public void f_runLoop(IJobHandle handle)
         {
             // Create the token source.
-            CancellationTokenSource cts = new CancellationTokenSource();
+            //CancellationTokenSource cts = new CancellationTokenSource();
 
             /* 4: stop */
             if (this.Status == 4) f_sleepAfterLoop(handle);
@@ -89,9 +92,9 @@ namespace corel
             /* 1: init */
             if (this.Status == 1)
             {
-                System.Tracer.WriteLine("J{0} BASE: INITED ...", this.Id);
+                System.Tracer.WriteLine("J{0} -> INITED", this.Id);
                 this.Handle = handle;
-                this.f_init();
+                this.f_INIT();
                 this.Status = 2; /* 2: running */
                 f_runLoop(handle);
             }
@@ -108,17 +111,14 @@ namespace corel
                 else
                     m = this.Handle.Factory.f_getMessage(null);
 
+                // WAITING TO RECEIVED MESSAGE ...
                 if (m == null)
-                {
-                    //Tracer.WriteLine("J{0} BASE: WAITING ...", this.Id);
-                    // WAITING TO RECEIVED MESSAGE ...
                     f_sleepAfterLoop(handle);
-                }
                 else
                 {
-                    //Tracer.WriteLine("J{0} BASE: PROCESSING ...", this.Id);
+                    //Tracer.WriteLine("J{0} PROCESSING ...", this.Id);
                     // PROCESSING MESSAGE
-                    ProcessMessage fun = this.f_processMessage;
+                    ProcessMessage fun = this.f_PROCESS_MESSAGE;
                     IAsyncResult asyncRes = fun.BeginInvoke(m, new AsyncCallback(f_callbackProcessMessage), null);
 
                     ///// check timeout ...

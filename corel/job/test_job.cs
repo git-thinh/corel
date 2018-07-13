@@ -9,7 +9,21 @@ namespace corel
 {
     public static class test_job
     {
-        public static void f_jobTest_Handle()
+        public static void f_handle_HTTP_FILE()
+        {
+            IJobContext jc = new JobMonitor();
+            IJob jo = new JobFileHttp(jc);
+            IJobHandle handle = new JobHandle(jo);
+
+            Console.WriteLine("Enter to stop all JOB...");
+            Console.ReadLine();
+            handle.f_actionJob(JOB_HANDLE.REMOVE);
+
+            Console.WriteLine("Enter to exit...");
+            Console.ReadLine();
+        }
+
+        public static void f_handle_Test()
         {
             IJobContext jc = new JobMonitor();
             IJob jo = new JobTest(jc);
@@ -17,42 +31,42 @@ namespace corel
 
             Console.WriteLine("Enter to stop all JOB...");
             Console.ReadLine();
-            jc.f_removeAll();
+            handle.f_actionJob(JOB_HANDLE.REMOVE);
 
             Console.WriteLine("Enter to exit...");
             Console.ReadLine();
         }
-        
+
         public static void f_jobTest_Factory()
         {
             IJobContext jc = new JobMonitor();
 
             jc.f_createNew(new JobTest(jc));
-            jc.f_createNew(new JobTest(jc));
-            jc.f_createNew(new JobTest(jc));
-            jc.f_createNew(new JobTest(jc));
-            jc.f_createNew(new JobTest(jc));
+            //jc.f_createNew(new JobTest(jc));
+            //jc.f_createNew(new JobTest(jc));
+            //jc.f_createNew(new JobTest(jc));
+            //jc.f_createNew(new JobTest(jc));
 
             /////////////////////////////////////////////////////
 
-            Console.WriteLine("Enter to send many request to load balancer jobs on factory ...");
-            Console.ReadLine();
-            const int len = 9;
-            Message[] ms = new Message[len];
-            for (int i = 0; i < len; i++)
-            {
-                ms[i] = new Message() { Input = i };
-                if (i == 0) ms[i].f_setTimeOut(30000);
-                if (i == 5) ms[i].f_setTimeOut(7000);
-                if (i == 8) ms[i].f_setTimeOut(5000);
-            }
+            //Console.WriteLine("Enter to send many request to load balancer jobs on factory ...");
+            //Console.ReadLine();
+            //const int len = 9;
+            //Message[] ms = new Message[len];
+            //for (int i = 0; i < len; i++)
+            //{
+            //    ms[i] = new Message() { Input = i };
+            //    if (i == 0) ms[i].f_setTimeOut(30000);
+            //    if (i == 5) ms[i].f_setTimeOut(7000);
+            //    if (i == 8) ms[i].f_setTimeOut(5000);
+            //}
 
-            Func<IJobHandle, Guid, bool> responseCallbackDoneAll = (msgHandle, groupId) =>
-             {
-                 System.Tracer.WriteLine("TEST_JOB.RUN_TEST(): FINISH ....");
-                 return false;
-             };
-            jc.f_sendRequestMessages(JOB_TYPE.NONE, ms, responseCallbackDoneAll);
+            //Func<IJobHandle, Guid, bool> responseCallbackDoneAll = (msgHandle, groupId) =>
+            // {
+            //     System.Tracer.WriteLine("TEST_JOB.RUN_TEST(): FINISH ....");
+            //     return false;
+            // };
+            //jc.f_sendRequestMessages(JOB_TYPE.NONE, ms, responseCallbackDoneAll);
 
             /////////////////////////////////////////////////////
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -9,47 +10,15 @@ namespace corel
 
     public class JobFactory : IJobFactory
     {
-        static readonly Func<IJobHandle, object, bool> JOB_ACTION = (IJobHandle handle, object para) =>
-         {
-             JOB_HANDLE cmd = (JOB_HANDLE)para;
-             handle.f_actionJob(cmd);
-             return true;
-         };
-
-        static readonly Func<IJobHandle[], Message[], bool> SEND_MESSAGE_LOAD_BALANCER_TO_JOB = (IJobHandle[] handles, Message[] ms) =>
-        {
-            int count = ms.Length, i = 0, id = 0;
-            while (count > 0)
-            {
-                i = 0;
-                for (i = 0; i < handles.Length; i++)
-                {
-                    ms[id].f_setJobExecuteId(handles[i].Job.f_getId());
-                    handles[i].f_receiveMessage(ms[id]);
-                    System.Tracer.WriteLine("J{0}: {1} = {2}", handles[i].Job.f_getId(), id, ms[id].GetMessageId());
-
-                    id++;
-                    if (id == ms.Length)
-                    {
-                        count = 0;
-                        break;
-                    }
-                }
-                count = count - i;
-            }
-            return true;
-        };
-
         readonly ConcurrentDictionary<int, IJobHandle> JobHandles;
         readonly JOB_TYPE Type;
         readonly ConcurrentQueue<Message> Messages;
 
         public JobFactory(JOB_TYPE type)
         {
+            this.JobHandles = new ConcurrentDictionary<int, IJobHandle>();
             this.Messages = new ConcurrentQueue<Message>();
-
             this.Type = type;
-            JobHandles = new ConcurrentDictionary<int, IJobHandle>();
         }
 
         public IJobHandle f_createNew(IJob job)
@@ -72,6 +41,11 @@ namespace corel
             return jo;
         }
 
+        public JobInfo[] f_getAllJobs()
+        {
+            return this.JobHandles.Select(x => new JobInfo() { Id = x.Key, Type = x.Value.Job.Type }).ToArray();
+        }
+
         public int f_count()
         {
             return JobHandles.Count;
@@ -79,16 +53,14 @@ namespace corel
 
         public void f_actionJobs(JOB_HANDLE action)
         {
-            //this.JobHandles.ExecuteFunc(JOB_ACTION, action);
+            foreach (var kv in this.JobHandles)
+                kv.Value.f_actionJob(action);
         }
 
         public void f_sendRequestLoadBalancer(Message[] ms)
         {
-            //this.JobHandles.ExecuteFuncLoadBalancer<Message>(SEND_MESSAGE_LOAD_BALANCER_TO_JOB, messages);
             for (int i = 0; i < ms.Length; i++)
-            {
                 this.Messages.Enqueue(ms[i]);
-            }
         }
 
         public Message f_getMessage(Message msgDefault)

@@ -114,7 +114,8 @@ namespace corel
             app.f_INIT();
             //app.f_RUN();
 
-            test_job.f_jobTest_Handle();
+            test_job.f_handle_HTTP_FILE();
+            //test_job.f_jobTest_Handle();
             //test_job.f_jobTest_Factory();
         }
     }

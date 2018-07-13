@@ -55,7 +55,17 @@ namespace corel
             }
             return handle;
         }
-        
+
+        public JobInfo[] f_getAllJobs()
+        {
+            List<JobInfo> ls = new List<JobInfo>();
+            foreach (var kv in this.JobFactories)
+                ls.AddRange(kv.Value.f_getAllJobs());
+            foreach (var kv in this.JobSingletons)
+                ls.Add(new JobInfo() { Id = kv.Value.Job.f_getId(), Type = kv.Key });
+            return ls.ToArray();
+        }
+
         public int f_getTotalJob()
         {
             IJobFactory[] facs = this.JobFactories.Values.ToArray();

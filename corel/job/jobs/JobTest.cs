@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Salar.Bois;
+using System;
+using System.IO;
 using System.Threading;
 
 namespace corel
@@ -9,18 +11,29 @@ namespace corel
         {
         }
         
-        public override void f_init()
+        public override void f_INIT()
         {
-            Tracer.WriteLine("J{0} TEST: SIGNAL -> INITED", this.f_getId());
+            Tracer.WriteLine("J{0} TEST -> INITED", this.f_getId());
         }
-        public override void f_processMessageCallbackResult(Message m) {
-            Tracer.WriteLine("J{0} DONE: {1}-{2} ",this.f_getId(), m.Input,  m.GetMessageId());
+        public override void f_STOP()
+        {
+            Tracer.WriteLine("J{0} {1} -> STOPED", this.Type, this.f_getId());
+        }
+        public override void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m) {
+            Tracer.WriteLine("J{0} DONE: {1}-{2} ", this.f_getId(), m.Input, m.GetMessageId());
             this.JobContext.MessageContext.f_responseMessage(m);            
         }
-        public override Message f_processMessage(Message m)
+        public override Message f_PROCESS_MESSAGE(Message m)
         { 
             m.Output = new MessageResult() { Ok = true };
             Thread.Sleep(2000);
+
+            //var boisSerializer = new BoisSerializer();
+            //using (var mem = new MemoryStream())
+            //{
+            //    boisSerializer.Serialize(this, mem);
+            //    var mm = boisSerializer.Deserialize(mem.GetBuffer(), m.GetType(), 0, (int)mem.Length);
+            //}
 
             //Message m = null;
             //m = this.Messages.Dequeue(null);

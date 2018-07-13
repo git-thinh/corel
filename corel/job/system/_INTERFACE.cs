@@ -5,7 +5,9 @@ using System.Threading;
 
 namespace corel
 {
-    public interface IJobContext {
+    public interface IJobContext
+    {
+        JobInfo[] f_getAllJobs();
         int f_getTotalJob();
         IMessageContext MessageContext { get; }
 
@@ -18,6 +20,7 @@ namespace corel
     
     public interface IJobFactory
     {
+        JobInfo[] f_getAllJobs();
         void f_actionJobs(JOB_HANDLE action);
         int f_count();
 
