@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace corel
 {
-    public class JobMessage : JobWorker, IMessageContext
+    public class JobMessage : JobBase, IMessageContext
     {
         #region [ VARIABLE ]
 

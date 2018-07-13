@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace corel
 {
-    public class JobFileHttp : JobWorker
+    public class JobFileHttp : JobBase
     {
         int Port = 3456;
         readonly HttpServer server;

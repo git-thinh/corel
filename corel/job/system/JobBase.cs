@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace corel
 {
-    public class JobWorker : IJob
+    public class JobBase : IJob
     {
         readonly ConcurrentQueue<Message> Messages;
         volatile int Id = 0;
@@ -31,7 +31,7 @@ namespace corel
 
         public int f_getId() { return Id; }
 
-        public JobWorker(IJobContext jobContext, JOB_TYPE type)
+        public JobBase(IJobContext jobContext, JOB_TYPE type)
         {
             this.Messages = new ConcurrentQueue<Message>();
 
@@ -137,7 +137,7 @@ namespace corel
             ///////////////////////
         }
 
-        ~JobWorker()
+        ~JobBase()
         {
         }
     }

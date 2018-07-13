@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace corel
 {
-    public class JobTest : JobWorker
+    public class JobTest : JobBase
     {
         public JobTest(IJobContext jobContext) : base(jobContext, JOB_TYPE.NONE)
         {

@@ -65,7 +65,7 @@
     <Compile Include="job\system\JobHandle.cs" />
     <Compile Include="job\system\JobInfo.cs" />
     <Compile Include="job\system\JobMonitor.cs" />
-    <Compile Include="job\system\JobWorker.cs" />
+    <Compile Include="job\system\JobBase.cs" />
     <Compile Include="job\system\JOB_CONST.cs" />
     <Compile Include="job\system\JOB_HANDLE.cs" />
     <Compile Include="job\system\JOB_NAME.cs" />
