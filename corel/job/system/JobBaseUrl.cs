@@ -80,6 +80,7 @@ namespace corel
             f_runLoop(handle);
         }
 
+        bool timeout = false;
         public void f_runLoop(IJobHandle handle)
         {
             // Create the token source.
@@ -117,31 +118,33 @@ namespace corel
                     string htm = string.Empty,
                         url = "http://localhost:3456/";
                     var request = CreateWebRequest(url);
-                    //IAsyncResult asyncRes = request.BeginGetResponse(f_responseCallBack, new KeyValuePair<WebRequest, ResultCallBack>(request, f_resultCallback));
                     IAsyncResult asyncRes = request.BeginGetResponse(null, request);
 
                     /// CHECK TIMEOUT = Poll IAsyncResult.IsCompleted
                     int counter = 1;
+                    timeout = false;
                     while (asyncRes.IsCompleted == false)
                     { 
                         Thread.Sleep(1000);  // emulate that method is busy
                         counter++;
                         if (counter == 3)
                         {
-                            asyncRes.AsyncWaitHandle.Close();
+                            timeout = true;
+                            request.Abort();
                             break;
                         }
                     }
-                    if (asyncRes.IsCompleted)
+                    if (timeout)
                     {
+                        // TIMEOUT: REQUEST FAILD
+                    }
+                    else {
+                        // REQUEST SUCCESS
                         HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncRes);
                         using (var stream = response.GetResponseStream())
                         using (var reader = new StreamReader(stream, Encoding.UTF8))
                             htm = reader.ReadToEnd();
                         response.Close();
-                    }
-                    else {
-                        // MAKED TIMEOUT ...
                     }
                 }
             }
