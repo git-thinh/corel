@@ -120,78 +120,35 @@ namespace corel
                     //IAsyncResult asyncRes = request.BeginGetResponse(f_responseCallBack, new KeyValuePair<WebRequest, ResultCallBack>(request, f_resultCallback));
                     IAsyncResult asyncRes = request.BeginGetResponse(null, request);
 
-                    /// CHECK TIMEOUT ... 
-                    ////Poll IAsyncResult.IsCompleted
+                    /// CHECK TIMEOUT = Poll IAsyncResult.IsCompleted
+                    int counter = 1;
                     while (asyncRes.IsCompleted == false)
                     { 
                         Thread.Sleep(1000);  // emulate that method is busy
-                    } 
-                    HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncRes);
-                    using (var stream = response.GetResponseStream())
+                        counter++;
+                        if (counter == 3)
+                        {
+                            asyncRes.AsyncWaitHandle.Close();
+                            break;
+                        }
+                    }
+                    if (asyncRes.IsCompleted)
+                    {
+                        HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncRes);
+                        using (var stream = response.GetResponseStream())
                         using (var reader = new StreamReader(stream, Encoding.UTF8))
                             htm = reader.ReadToEnd();
-                    response.Close();
-
-                    //ProcessMessage fun = this.f_PROCESS_MESSAGE;
-                    //IAsyncResult asyncRes = fun.BeginInvoke(m, new AsyncCallback(f_callbackProcessMessage), null);
-
-                    ///// check timeout ...
-                    //IAsyncResult asyncRes = fun.BeginInvoke(m, null, null);
-                    //// Poll IAsyncResult.IsCompleted
-                    //while (asyncRes.IsCompleted == false)
-                    //{
-                    //    Console.WriteLine("Square Number still processing");
-                    //    Thread.Sleep(1000);  // emulate that method is busy
-                    //}
-                    //Console.WriteLine("Square Number processing completed");
-                    //Guid res = fun.EndInvoke(asyncRes);
+                        response.Close();
+                    }
+                    else {
+                        // MAKED TIMEOUT ...
+                    }
                 }
             }
             /// end function
             ///////////////////////
         }
-
-        delegate void ResultCallBack(string url, bool succeed, string result);
-        ResultCallBack f_resultCallback = (string url, bool succeed, string result) => { };
-
-        void f_responseCallBack(IAsyncResult ar)
-        {
-            var pair = (KeyValuePair<WebRequest, ResultCallBack>)ar.AsyncState;
-            var request = pair.Key;
-            var callback = pair.Value;
-            HttpWebResponse response = null;
-            string url = request.RequestUri.ToString();
-
-            try
-            {
-                response = (HttpWebResponse)request.EndGetResponse(ar);
-                if (response.StatusCode != HttpStatusCode.OK)
-                {
-                    callback(url, false, "Response is failed with code: " + response.StatusCode);
-                    return;
-                }
-
-                using (var stream = response.GetResponseStream())
-                {
-                    string output;
-                    using (var reader = new StreamReader(stream, Encoding.UTF8)) 
-                        output = reader.ReadToEnd(); 
-                    callback(url, true, output);
-                }
-            }
-            catch (Exception ex)
-            {
-                callback(url, false, "Request failed.\r\n" + ex.Message);
-            }
-            finally
-            {
-                if (response != null)
-                {
-                    response.Close();
-                }
-            }
-        }
-
+        
         const string RequestUserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0";
         static WebRequest CreateWebRequest(string url, int timeout = 50 * 1000)
         {

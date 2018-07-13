@@ -38,6 +38,8 @@ namespace corel
 
             //data = JsonConvert.SerializeObject(this.JobContext.f_getAllJobs());
 
+            Thread.Sleep(9000);
+
             e.Response.ContentType = "application/json; charset=utf-8";
             using (var writer = new StreamWriter(e.Response.OutputStream))
                 writer.Write(data);
