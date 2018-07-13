@@ -36,7 +36,7 @@ namespace corel
 
             string data = @"{""key"":""Tiếng Việt""}";
 
-            data = JsonConvert.SerializeObject(this.JobContext.f_getAllJobs());
+            //data = JsonConvert.SerializeObject(this.JobContext.f_getAllJobs());
 
             e.Response.ContentType = "application/json; charset=utf-8";
             using (var writer = new StreamWriter(e.Response.OutputStream))

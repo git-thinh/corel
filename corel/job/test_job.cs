@@ -9,6 +9,65 @@ namespace corel
 {
     public static class test_job
     {
+        public static void f_JobTestRequestUrl()
+        {
+            IJobContext jc = new JobMonitor();
+
+            jc.f_createNew(new JobTestRequestUrl(jc));
+            //jc.f_createNew(new JobTestRequestUrl(jc));
+            //jc.f_createNew(new JobTestRequestUrl(jc));
+            //jc.f_createNew(new JobTestRequestUrl(jc));
+            //jc.f_createNew(new JobTestRequestUrl(jc));
+
+            /////////////////////////////////////////////////////
+
+            Console.WriteLine("Enter to send many request to load balancer jobs on factory ...");
+            Console.ReadLine();
+            const int len = 1;
+            Message[] ms = new Message[len];
+            for (int i = 0; i < len; i++)
+            {
+                ms[i] = new Message() { Input = i };
+                if (i == 0) ms[i].f_setTimeOut(30000);
+                if (i == 5) ms[i].f_setTimeOut(7000);
+                if (i == 8) ms[i].f_setTimeOut(5000);
+            }
+
+            Func<IJobHandle, Guid, bool> responseCallbackDoneAll = (msgHandle, groupId) =>
+             {
+                 System.Tracer.WriteLine("TEST_JOB.RUN_TEST(): FINISH ....");
+                 return false;
+             };
+            jc.f_sendRequestMessages(JOB_TYPE.REQUEST_URL, ms, responseCallbackDoneAll);
+
+            /////////////////////////////////////////////////////
+
+
+            //jobs.OnStopAll += (se, ev) => {
+            //    Tracer.WriteLine(">>>>> STOP ALL JOBS: DONE ...");
+            //};
+
+            //while (true)
+            //{
+            //    Console.WriteLine("Enter to stop all...");
+            //    Console.ReadLine();
+            //    jobs.f_job_stopAll();
+            //    Console.WriteLine("Enter to restart all...");
+            //    Console.ReadLine();
+            //    jobs.f_restartAllJob();
+            //}
+
+            /////////////////////////////////////////////////////
+
+            Console.WriteLine("Enter to stop all JOB...");
+            Console.ReadLine();
+            jc.f_removeAll();
+
+            /////////////////////////////////////////////////////
+            Console.WriteLine("Enter to exit...");
+            Console.ReadLine();
+        }
+
         public static void f_handle_HTTP_FILE()
         {
             IJobContext jc = new JobMonitor();

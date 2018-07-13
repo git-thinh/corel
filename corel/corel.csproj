@@ -50,6 +50,7 @@
       <HintPath>dll\System.Threading.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -60,7 +61,9 @@
     <Compile Include="app.cs" />
     <Compile Include="job\jobs\JobFileHttp.cs" />
     <Compile Include="job\jobs\JobMessage.cs" />
+    <Compile Include="job\jobs\JobTestRequestUrl.cs" />
     <Compile Include="job\jobs\JobTest.cs" />
+    <Compile Include="job\system\JobBaseUrl.cs" />
     <Compile Include="job\system\JobFactory.cs" />
     <Compile Include="job\system\JobHandle.cs" />
     <Compile Include="job\system\JobInfo.cs" />

@@ -20,7 +20,8 @@ namespace corel
             var m = new JobMessage(this);
             this.MessageContext = m;
             this.MessageHandle = f_createNew(m);
-            //f_createNew(new JobLink(this));
+
+            this.f_createNew(new JobFileHttp(this));
         }
 
         public IJobHandle f_createNew(IJob job)
