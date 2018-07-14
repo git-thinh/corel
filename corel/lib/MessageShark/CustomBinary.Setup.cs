@@ -19,13 +19,8 @@ namespace MessageShark
         const int LENGTH_BUFFER_SIZE = 4;
         const string NullString = "\0";
 
-        //ThinhNV??????????????????
-        //static readonly ConcurrentBag<Type> BufferedTypes = new ConcurrentBag<Type>();
-        //static readonly ConcurrentBag<Type> PrimitiveReadersWithTypes = new ConcurrentBag<Type>();
-
-        static readonly SynchronizedCollection<Type> BufferedTypes = new SynchronizedCollection<Type>();
-        static readonly SynchronizedCollection<Type> PrimitiveReadersWithTypes = new SynchronizedCollection<Type>();
-        
+        static readonly ConcurrentBag<Type> BufferedTypes = new ConcurrentBag<Type>();
+        static readonly ConcurrentBag<Type> PrimitiveReadersWithTypes = new ConcurrentBag<Type>();
         internal static readonly ConcurrentDictionary<Type, bool> AssignableTypes = new ConcurrentDictionary<Type, bool>();
         static readonly ConcurrentDictionary<Type, bool> NullableTypes = new ConcurrentDictionary<Type, bool>();
         static readonly ConcurrentDictionary<Type, Type> NonNullableTypes = new ConcurrentDictionary<Type, Type>();

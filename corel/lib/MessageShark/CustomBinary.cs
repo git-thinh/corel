@@ -180,7 +180,7 @@ namespace MessageShark {
             return length;
         }
 
-        static void ReverseEx(byte[] buffer) {
+        static void ReverseEx(this byte[] buffer) {
             var size = buffer.Length;
             var midpoint = size / 2;
             for (int i = 0; i < midpoint; i++) {
