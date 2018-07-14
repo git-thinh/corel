@@ -3,7 +3,8 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using System.Threading; 
+using System.Threading;
+using System.Windows.Forms;
 
 namespace corel
 {
@@ -114,10 +115,14 @@ namespace corel
             app.f_INIT();
             //app.f_RUN();
 
-            test_job.f_JobTestRequestUrl();
+            test_job.f_websocket_Handle();
+            //test_job.f_JobTestRequestUrl();
             //test_job.f_handle_HTTP_FILE();
             //test_job.f_jobTest_Handle();
             //test_job.f_jobTest_Factory();
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
     }
 }

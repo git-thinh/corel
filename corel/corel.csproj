@@ -59,6 +59,8 @@
     <Compile Include="api\ListThreadSafe.cs" />
     <Compile Include="api\Tracer.cs" />
     <Compile Include="app.cs" />
+    <Compile Include="job\jobs\JobWebSocketClient.cs" />
+    <Compile Include="job\jobs\JobWebSocket.cs" />
     <Compile Include="job\jobs\JobFileHttp.cs" />
     <Compile Include="job\jobs\JobMessage.cs" />
     <Compile Include="job\jobs\JobTestRequestUrl.cs" />

@@ -11,6 +11,8 @@ namespace corel
         REQUEST_URL,
         LINK,
         FILE_HTTP_CACHE,
+        WEB_SOCKET_SERVER,
+        WEB_SOCKET_CLIENT,
         FILE_WRITE,
         ENGLISH_GOOGLE_TRANSLATER,
         ENGLISH_MEDIA,// CACHE & PLAY: MP3, MP4, YOUTUBE, ...

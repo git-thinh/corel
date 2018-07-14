@@ -9,6 +9,7 @@ namespace corel
 {
     public static class test_job
     {
+
         public static void f_JobTestRequestUrl()
         {
             IJobContext jc = new JobMonitor();
@@ -64,6 +65,30 @@ namespace corel
             jc.f_removeAll();
 
             /////////////////////////////////////////////////////
+            Console.WriteLine("Enter to exit...");
+            Console.ReadLine();
+        }
+
+        public static void f_websocket_Handle()
+        {
+            IJobContext jc = new JobMonitor();
+
+            IJob ws = new JobWebSocket(jc);
+            IJobHandle handleWS = new JobHandle(ws);
+
+            Console.WriteLine("Enter to create WS Client ... ");
+            Console.ReadLine();
+
+            IJob client = new JobWebSocketClient(jc);
+            IJobHandle handleClient = new JobHandle(client);
+
+            Console.WriteLine("Enter to stop all JOB...");
+            Console.ReadLine();
+
+            handleClient.f_actionJob(JOB_HANDLE.REMOVE);
+            handleWS.f_actionJob(JOB_HANDLE.REMOVE);
+            jc.f_removeAll();
+
             Console.WriteLine("Enter to exit...");
             Console.ReadLine();
         }
