@@ -28,9 +28,9 @@ namespace corel
             for (int i = 0; i < len; i++)
             {
                 ms[i] = new Message() { Input = i };
-                if (i == 0) ms[i].f_setTimeOut(30000);
-                if (i == 5) ms[i].f_setTimeOut(7000);
-                if (i == 8) ms[i].f_setTimeOut(5000);
+                if (i == 0) ms[i].f_setTimeOutMillisecond(3000);
+                if (i == 5) ms[i].f_setTimeOutMillisecond(7000);
+                if (i == 8) ms[i].f_setTimeOutMillisecond(5000);
             }
 
             Func<IJobHandle, Guid, bool> responseCallbackDoneAll = (msgHandle, groupId) =>

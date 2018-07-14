@@ -64,7 +64,8 @@
     <Compile Include="job\jobs\JobTestRequestUrl.cs" />
     <Compile Include="job\jobs\JobTest.cs" />
     <Compile Include="job\system\JobBaseUrl.cs" />
-    <Compile Include="job\system\JobFactory.cs" />
+    <Compile Include="job\system\JobFactoryUrl.cs" />
+    <Compile Include="job\system\JobFactoryBase.cs" />
     <Compile Include="job\system\JobHandle.cs" />
     <Compile Include="job\system\JobInfo.cs" />
     <Compile Include="job\system\JobMonitor.cs" />

@@ -7,24 +7,24 @@ namespace corel
 {
     public class JobTest : JobBase
     {
-        public JobTest(IJobContext jobContext) : base(jobContext, JOB_TYPE.NONE)
-        {
-        }
-        
+        public JobTest(IJobContext jobContext) : base(jobContext, JOB_TYPE.NONE) { }
+
         public override void f_INIT()
         {
-            Tracer.WriteLine("J{0} TEST -> INITED", this.f_getId());
+            Tracer.WriteLine("J{0}_{1} TEST -> INIT", this.f_getId(), this.Type);
         }
         public override void f_STOP()
         {
-            Tracer.WriteLine("J{0} {1} -> STOPED", this.Type, this.f_getId());
+            Tracer.WriteLine("J{0}_{1} TEST -> STOP", this.f_getId(), this.Type);
         }
-        public override void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m) {
-            Tracer.WriteLine("J{0} DONE: {1}-{2} ", this.f_getId(), m.Input, m.GetMessageId());
-            this.JobContext.MessageContext.f_responseMessage(m);            
+
+        public override void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m)
+        {
+            //Tracer.WriteLine("J{0} DONE: {1}-{2} ", this.f_getId(), m.Input, m.GetMessageId());
+            this.JobContext.MessageContext.f_responseMessage(m);
         }
         public override Message f_PROCESS_MESSAGE(Message m)
-        { 
+        {
             m.Output = new MessageResult() { Ok = true };
             Thread.Sleep(2000);
 

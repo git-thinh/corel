@@ -47,7 +47,7 @@ namespace corel
 
         public override void f_INIT()
         {
-            Tracer.WriteLine("J{0} {1} -> INITED", this.f_getId(), this.Type);
+            Tracer.WriteLine("J{0}_{1} {2} -> INIT", this.f_getId(), this.Type, this.GetType().Name);
             // Tracer.WriteLine("J{0} executes on thread {1}: INIT ...");
             //Process.Start(String.Format("http://{0}/", server.EndPoint));
             server.Start();
@@ -59,7 +59,7 @@ namespace corel
             fileData.Clear();
             server.Stop();
             server.Dispose();
-            Tracer.WriteLine("J{0} {1} -> STOPED", this.f_getId(), this.Type);
+            Tracer.WriteLine("J{0}_{1} {2} -> STOP", this.f_getId(), this.Type, this.GetType().Name);
         }
         public override void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m)
         {

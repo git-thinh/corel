@@ -53,7 +53,7 @@ namespace corel
         public void f_stop()
         {
             this.Status = 4; /* 4: stop */
-            System.Tracer.WriteLine("J{0} -> STOP", this.Id);
+            System.Tracer.WriteLine("J{0}_{1} JobBase -> STOP", this.Id, this.Type);
             this.f_STOP();
             this.Handle.f_actionJobCallback();
         }
@@ -92,7 +92,7 @@ namespace corel
             /* 1: init */
             if (this.Status == 1)
             {
-                System.Tracer.WriteLine("J{0} -> INITED", this.Id);
+                System.Tracer.WriteLine("J{0}_{1} JobBase -> INIT", this.Id, this.Type);
                 this.Handle = handle;
                 this.f_INIT();
                 this.Status = 2; /* 2: running */

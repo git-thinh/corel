@@ -52,7 +52,7 @@ namespace corel
         public void f_stop()
         {
             this.Status = 4; /* 4: stop */
-            System.Tracer.WriteLine("J{0} -> STOP", this.Id);
+            System.Tracer.WriteLine("J{0}_{1} JobBaseUrl -> STOP", this.Id, this.Type);
             this.f_STOP();
             this.Handle.f_actionJobCallback();
         }
@@ -92,7 +92,7 @@ namespace corel
             /* 1: init */
             if (this.Status == 1)
             {
-                System.Tracer.WriteLine("J{0} -> INITED", this.Id);
+                System.Tracer.WriteLine("J{0}_{1} JobBaseUrl -> INIT", this.Id, this.Type);
                 this.Handle = handle;
                 this.f_INIT();
                 this.Status = 2; /* 2: running */
@@ -117,17 +117,20 @@ namespace corel
 
                     string htm = string.Empty,
                         url = "http://localhost:3456/";
+
+                    m.Input = url;
+
                     var request = CreateWebRequest(url);
                     IAsyncResult asyncRes = request.BeginGetResponse(null, request);
 
                     /// CHECK TIMEOUT = Poll IAsyncResult.IsCompleted
-                    int counter = 1;
+                    int counter = 1000, timeExpire = m.f_getTimeOutMillisecond();
                     timeout = false;
                     while (asyncRes.IsCompleted == false)
                     { 
                         Thread.Sleep(1000);  // emulate that method is busy
-                        counter++;
-                        if (counter == 3)
+                        counter += 1000;
+                        if (timeExpire > 0 && timeExpire <= counter)
                         {
                             timeout = true;
                             request.Abort();
@@ -137,6 +140,7 @@ namespace corel
                     if (timeout)
                     {
                         // TIMEOUT: REQUEST FAILD
+                        m.f_setErrorTimeOut();
                     }
                     else {
                         // REQUEST SUCCESS
@@ -145,7 +149,13 @@ namespace corel
                         using (var reader = new StreamReader(stream, Encoding.UTF8))
                             htm = reader.ReadToEnd();
                         response.Close();
+                                                
+                        m.Output.Ok = true;
+                        m.Output.SetData(htm);
                     }
+
+                    if (this.Handle.Factory != null)
+                        this.Handle.Factory.f_sendResponseEvent(m);
                 }
             }
             /// end function

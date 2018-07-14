@@ -7,14 +7,13 @@ using System.Threading;
 
 namespace corel
 {
-
-    public class JobFactory : IJobFactory
+    public class JobFactoryBase : IJobFactory
     {
         readonly ConcurrentDictionary<int, IJobHandle> JobHandles;
         readonly JOB_TYPE Type;
-        readonly ConcurrentQueue<Message> Messages;
+        protected readonly ConcurrentQueue<Message> Messages;
 
-        public JobFactory(JOB_TYPE type)
+        public JobFactoryBase(JOB_TYPE type)
         {
             this.JobHandles = new ConcurrentDictionary<int, IJobHandle>();
             this.Messages = new ConcurrentQueue<Message>();
@@ -57,25 +56,27 @@ namespace corel
                 kv.Value.f_actionJob(action);
         }
 
-        public void f_sendRequestLoadBalancer(Message[] ms)
+        public virtual void f_sendRequests(Message[] ms)
         {
             for (int i = 0; i < ms.Length; i++)
                 this.Messages.Enqueue(ms[i]);
         }
 
-        public Message f_getMessage(Message msgDefault)
+        public virtual Message f_getMessage(Message msgDefault)
         {
             Message m = msgDefault;
             this.Messages.TryDequeue(out m);
             return m;
         }
 
+        public virtual void f_sendResponseEvent(Message m) { }
+
         public void f_jobFactoryStateChanged(IJob job, JOB_HANDLE state)
         {
             Tracer.WriteLine("JOB_FACTORY STATE CHANGED: {0}.{1} = {2}", job.Type, job.f_getId(), state);
         }
 
-        ~JobFactory()
+        ~JobFactoryBase()
         {
             //this.JobHandles.ExecuteFunc(JOB_ACTION, JOB_HANDLE.REMOVE);
         }

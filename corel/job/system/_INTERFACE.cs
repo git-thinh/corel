@@ -28,7 +28,8 @@ namespace corel
 
         Message f_getMessage(Message msgDefault);
 
-        void f_sendRequestLoadBalancer(Message[] messages);
+        void f_sendRequests(Message[] messages);
+        void f_sendResponseEvent(Message m);
 
         void f_jobFactoryStateChanged(IJob job, JOB_HANDLE state);
     }

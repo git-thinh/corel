@@ -69,17 +69,28 @@ namespace corel
 
     public class Message
     {
+        readonly Guid Id = Guid.Empty;
         Guid GroupId = Guid.Empty;
 
-        int TimeOut = 0;
-        public void f_setTimeOut(int timeOut) { this.TimeOut = timeOut; }
-        public int f_getTimeOut() { return this.TimeOut; }
+        bool hasErrorTimeOut = false;
+        public void f_setErrorTimeOut() { this.hasErrorTimeOut = true; }
+        public bool IsTimeOut() { return this.hasErrorTimeOut; }
 
+        int TimeOut = 0;
+        public void f_setTimeOutMillisecond(int timeOut) { this.TimeOut = timeOut; }
+        public int f_getTimeOutMillisecond() { return this.TimeOut; }
+        
         int JobExecuteId = 0;
         public void f_setJobExecuteId(int jobExecuteId) { this.JobExecuteId = jobExecuteId; }
         public int f_getJobExecuteId() { return this.JobExecuteId; }
 
-        readonly Guid Id = Guid.Empty;
+
+
+
+
+
+
+
         readonly int SenderId;
         readonly int[] JobReceiveID;
         readonly SENDER_TYPE SenderType;

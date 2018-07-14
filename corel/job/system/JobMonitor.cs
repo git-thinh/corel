@@ -35,12 +35,18 @@ namespace corel
                     // factory
                     IJobFactory fac;
                     if (this.JobFactories.ContainsKey(type))
-                    {
                         fac = this.JobFactories[type];
-                    }
                     else
                     {
-                        fac = new JobFactory(type);
+                        switch (type)
+                        {
+                            case JOB_TYPE.REQUEST_URL:
+                                fac = new JobFactoryUrl(type);
+                                break;
+                            default:
+                                fac = new JobFactoryBase(type);
+                                break;
+                        }
                         this.JobFactories.TryAdd(type, fac);
                     }
                     handle = fac.f_createNew(job);
@@ -97,7 +103,7 @@ namespace corel
                 if (responseCallbackDoneAll != null)
                     if (this.MessageContext != null)
                         this.MessageContext.f_sendRequestMessages(type, ms, responseCallbackDoneAll);
-                this.JobFactories[type].f_sendRequestLoadBalancer(ms);
+                this.JobFactories[type].f_sendRequests(ms);
             }
             else if (this.JobSingletons.ContainsKey(type))
             {

@@ -69,11 +69,11 @@ namespace corel
         
         public override void f_INIT()
         {
-            Tracer.WriteLine("J{0} {1} -> INITED", this.f_getId(), this.Type);
+            Tracer.WriteLine("J{0}_{1} {2} -> INIT", this.f_getId(), this.Type, this.GetType().Name);
         }
         public override void f_STOP()
         {
-            Tracer.WriteLine("J{0} {1} -> STOPED", this.f_getId(), this.Type);
+            Tracer.WriteLine("J{0}_{1} {2} -> STOP", this.f_getId(), this.Type, this.GetType().Name);
         }
         public override void f_PROCESS_MESSAGE_CALLBACK_RESULT(Message m)
         {
@@ -118,7 +118,7 @@ namespace corel
             //this.ResponseMessages.Add(id, m);
 
             //remove checking timeout
-            if (m.f_getTimeOut() > 0) {
+            if (m.f_getTimeOutMillisecond() > 0) {
                bool ok = this.MessagesRequestTimeOut.RemoveItem1AndItem2_byItem2(mid);
             }
         }
@@ -135,9 +135,9 @@ namespace corel
             foreach (Message m in ms)
             {
                 Guid id = m.GetMessageId();
-                if (m.f_getTimeOut() > 0)
+                if (m.f_getTimeOutMillisecond() > 0)
                 {
-                    long timeOut = DateTime.Now.Ticks / 1000 + m.f_getTimeOut();
+                    long timeOut = DateTime.Now.Ticks / 1000 + m.f_getTimeOutMillisecond();
                     this.MessagesRequestTimeOut.Add(timeOut, id);
                 }
                 this.MessagesRequest.TryAdd(id, m);
