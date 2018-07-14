@@ -11,6 +11,8 @@ namespace corel
         REQUEST_URL,
         LINK,
         FILE_HTTP_CACHE,
+        RPC_SERVER,
+        RPC_CLIENT,
         WEB_SOCKET_SERVER,
         WEB_SOCKET_CLIENT,
         FILE_WRITE,

@@ -115,7 +115,8 @@ namespace corel
             app.f_INIT();
             //app.f_RUN();
 
-            test_job.f_websocket_Handle();
+            test_job.f_rpc_Handle();
+            //test_job.f_websocket_Handle();
             //test_job.f_JobTestRequestUrl();
             //test_job.f_handle_HTTP_FILE();
             //test_job.f_jobTest_Handle();
