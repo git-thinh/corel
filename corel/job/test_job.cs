@@ -73,13 +73,13 @@ namespace corel
         {
             IJobContext jc = new JobMonitor();
 
-            IJob ws = new JobWebSocket(jc);
+            IJob ws = new JobWebSocketServerTest(jc);
             IJobHandle handleWS = new JobHandle(ws);
 
             Console.WriteLine("Enter to create WS Client ... ");
             Console.ReadLine();
 
-            IJob client = new JobWebSocketClient(jc);
+            IJob client = new JobWebSocketClientTest(jc);
             IJobHandle handleClient = new JobHandle(client);
 
             Console.WriteLine("Enter to stop all JOB...");

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace corel
 {
-    public class JobWebSocket : JobBase
+    public class JobWebSocketServerTest : JobBase
     {
         int Port = 8181;
         readonly WebSocketServer server;
@@ -18,7 +18,7 @@ namespace corel
 
         readonly ConcurrentDictionary<string, string> fileData;
 
-        public JobWebSocket(IJobContext jobContext) : base(jobContext, JOB_TYPE.WEB_SOCKET_SERVER)
+        public JobWebSocketServerTest(IJobContext jobContext) : base(jobContext, JOB_TYPE.WEB_SOCKET_SERVER)
         {
             fileData = new ConcurrentDictionary<string, string>();
 
@@ -44,6 +44,7 @@ namespace corel
                 {
                     Console.WriteLine("Open!");
                     allSockets.Add(socket);
+                    f_sendBroadCast("SERVER SAY: WELCOME CLIENT_" + allSockets.Count.ToString() + " ...!");
                 };
                 socket.OnClose = () =>
                 {

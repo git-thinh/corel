@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Threading;
-using System.Linq;
-using NHttp;
-using System.IO;
-using System.Collections.Concurrent;
-using Newtonsoft.Json;
-using Fleck;
-using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
 
 namespace corel
 {
-    public class JobWebSocketClient : JobBase
+    public class JobWebSocketClientTest : JobBase
     {
         int Port = 8181;
         readonly string URL;
@@ -22,7 +15,7 @@ namespace corel
         private static String response = String.Empty;
         readonly Socket client;
 
-        public JobWebSocketClient(IJobContext jobContext) : base(jobContext, JOB_TYPE.WEB_SOCKET_CLIENT)
+        public JobWebSocketClientTest(IJobContext jobContext) : base(jobContext, JOB_TYPE.WEB_SOCKET_CLIENT)
         {
             this.URL = "ws://0.0.0.0:" + this.Port.ToString();
 
@@ -41,34 +34,51 @@ namespace corel
                 // remote device is "host.contoso.com". 
                 IPAddress ipAddress = Dns.Resolve("127.0.0.1").AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, this.Port);
-                
+
                 // Connect to the remote endpoint.
                 var asyncResult = client.BeginConnect(remoteEP, null, client);
-
                 // Poll state complete
                 while (!asyncResult.IsCompleted)
-                {
                     Thread.Sleep(1000);
-                }
 
                 // Retrieve the socket from the state object.
                 //Socket client = (Socket)asyncResult.AsyncState;
                 // Complete the connection.
                 client.EndConnect(asyncResult);
-                //Console.WriteLine("Socket connected to {0}", client.RemoteEndPoint.ToString());
+                Console.WriteLine("Socket connected to {0}", client.RemoteEndPoint.ToString());
 
 
+                // Convert the string data to byte data using ASCII encoding.
+                //byte[] byteData = Encoding.ASCII.GetBytes(data);
+                
+                //////////////////////////////////////////////////
+                /// SEND PRIVATE_KEY REQUEST CONNECT
+
+                // Send HS
+                var handshake = string.Format("GET / HTTP/1.1\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Version: 13\r\nSec-WebSocket-Key: p2z/MFplfpRzjsVywqRQTg==\r\nHost: {0}\r\nOrigin: http://{0}/\r\n\r\n", "127.0.0.1:8181");
+                var byteData = Encoding.UTF8.GetBytes(handshake);
+
+                // Begin sending the data to the remote device.
+                var asyncRsSend = client.BeginSend(byteData, 0, byteData.Length, 0, null, client);
+                // Poll state complete
+                while (!asyncRsSend.IsCompleted)
+                    Thread.Sleep(1000);
+
+                // Complete sending the data to the remote device.
+                int bytesSent = client.EndSend(asyncRsSend);
+                Console.WriteLine("Sent {0} bytes to server.", bytesSent);
+                
+                //////////////////////////////////////////////////
+                /// RECEIVER PUBLIC_KEY CONNECT AND ALWAYS WAITING RECEIVING DATA FROM SERVER
+                
                 // Create the state object.
                 StateObject state = new StateObject();
                 state.workSocket = client;
                 // Begin receiving the data from the remote device.
                 var asyncRsRead = client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, null, state);
-
                 // Poll state complete
                 while (!asyncRsRead.IsCompleted)
-                {
                     Thread.Sleep(1000);
-                }
 
                 // Read data from the remote device.
                 int bytesRead = client.EndReceive(asyncRsRead);
@@ -82,6 +92,10 @@ namespace corel
                         // There might be more data, so store the data received so far.
                         string s = Encoding.ASCII.GetString(cache, 0, bytesRead);
                         Console.WriteLine("=> Receive: " + s + "\n");
+                        //HTTP/1.1 101 Switching Protocols
+                        //Upgrade: websocket
+                        //Connection: Upgrade
+                        //Sec-WebSocket-Accept: NXrzFctS9UiabL6AvN1eb7X5cn8=
 
                         //receiveDone.Set();
 
@@ -94,24 +108,7 @@ namespace corel
                         //Console.WriteLine("=> waiting ... ");
                         //client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReceiveCallback), state);
                     }
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                }                
             }
             catch (Exception e)
             {
