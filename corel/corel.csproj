@@ -59,12 +59,12 @@
     <Compile Include="api\ListThreadSafe.cs" />
     <Compile Include="api\Tracer.cs" />
     <Compile Include="app.cs" />
-    <Compile Include="job\jobs\JobWebSocketClientTest.cs" />
-    <Compile Include="job\jobs\JobWebSocketServerTest.cs" />
+    <Compile Include="job\test\JobWebSocketClientTest.cs" />
+    <Compile Include="job\test\JobWebSocketServerTest.cs" />
     <Compile Include="job\jobs\JobFileHttp.cs" />
     <Compile Include="job\jobs\JobMessage.cs" />
-    <Compile Include="job\jobs\JobTestRequestUrl.cs" />
-    <Compile Include="job\jobs\JobTest.cs" />
+    <Compile Include="job\test\JobTestRequestUrl.cs" />
+    <Compile Include="job\test\JobTest.cs" />
     <Compile Include="job\system\JobBaseUrl.cs" />
     <Compile Include="job\system\JobFactoryUrl.cs" />
     <Compile Include="job\system\JobFactoryBase.cs" />
@@ -584,6 +584,29 @@
     <Compile Include="lib\NHTTP\LogManager.cs" />
     <Compile Include="lib\NHTTP\NHttpException.cs" />
     <Compile Include="lib\NHTTP\ProtocolException.cs" />
+    <Compile Include="lib\RPC\Enums.cs" />
+    <Compile Include="lib\RPC\Interop\RpcApi.cs" />
+    <Compile Include="lib\RPC\Interop\RpcClientInfo.cs" />
+    <Compile Include="lib\RPC\Interop\RpcHandle.cs" />
+    <Compile Include="lib\RPC\Interop\StructPtr.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\COMM_FAULT_OFFSETS.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\MIDL_SERVER_INFO.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\MIDL_STUB_DESC.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\RPC_CALL_ATTRIBUTES_V2.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\RPC_CLIENT_INTERFACE.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\RPC_DISPATCH_TABLE.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\RPC_PROTSEQ_ENDPOINT.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\RPC_SERVER_INTERFACE.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\RPC_SYNTAX_IDENTIFIER.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\RPC_VERSION.cs" />
+    <Compile Include="lib\RPC\Interop\Structs\SEC_WINNT_AUTH_IDENTITY.cs" />
+    <Compile Include="lib\RPC\Interop\UsageCounter.cs" />
+    <Compile Include="lib\RPC\IRpcClientInfo.cs" />
+    <Compile Include="lib\RPC\RpcClientApi.cs" />
+    <Compile Include="lib\RPC\RpcException.cs" />
+    <Compile Include="lib\RPC\RpcServerApi.cs" />
+    <Compile Include="lib\RPC\Shared\Check.cs" />
+    <Compile Include="lib\RPC\TraceLog.cs" />
     <Compile Include="lib\Salar.Bois\BoisContractAttribute.cs" />
     <Compile Include="lib\Salar.Bois\BoisMemberAttribute.cs" />
     <Compile Include="lib\Salar.Bois\BoisMemberInfo.cs" />
@@ -630,6 +653,7 @@
     <Content Include="dll\ReadMe.txt" />
     <Content Include="lib\Fleck\ReadMe.txt" />
     <Content Include="lib\NAudio\Changes.xml" />
+    <Content Include="lib\RPC\LICENSE-2.0.txt" />
     <Content Include="lib\Salar.Bois\TODO.txt" />
   </ItemGroup>
   <ItemGroup>

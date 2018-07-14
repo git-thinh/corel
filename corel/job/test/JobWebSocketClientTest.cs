@@ -32,7 +32,7 @@ namespace corel
                 // Establish the remote endpoint for the socket.
                 // The name of the 
                 // remote device is "host.contoso.com". 
-                IPAddress ipAddress = Dns.Resolve("127.0.0.1").AddressList[0];
+                IPAddress ipAddress = Dns.GetHostEntry("127.0.0.1").AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, this.Port);
 
                 // Connect to the remote endpoint.
