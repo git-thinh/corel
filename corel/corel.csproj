@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Build\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -78,6 +78,33 @@
     <Compile Include="job\system\Message.cs" />
     <Compile Include="job\system\_INTERFACE.cs" />
     <Compile Include="job\test_job.cs" />
+    <Compile Include="lib\Fleck\ConnectionNotAvailableException.cs" />
+    <Compile Include="lib\Fleck\FleckLog.cs" />
+    <Compile Include="lib\Fleck\FrameType.cs" />
+    <Compile Include="lib\Fleck\HandlerFactory.cs" />
+    <Compile Include="lib\Fleck\Handlers\ComposableHandler.cs" />
+    <Compile Include="lib\Fleck\Handlers\Draft76Handler.cs" />
+    <Compile Include="lib\Fleck\Handlers\FlashSocketPolicyRequestHandler.cs" />
+    <Compile Include="lib\Fleck\Handlers\Hybi13Handler.cs" />
+    <Compile Include="lib\Fleck\Helpers\MonoHelper.cs" />
+    <Compile Include="lib\Fleck\Interfaces\IHandler.cs" />
+    <Compile Include="lib\Fleck\Interfaces\ISocket.cs" />
+    <Compile Include="lib\Fleck\Interfaces\IWebSocketConnection.cs" />
+    <Compile Include="lib\Fleck\Interfaces\IWebSocketConnectionInfo.cs" />
+    <Compile Include="lib\Fleck\Interfaces\IWebSocketServer.cs" />
+    <Compile Include="lib\Fleck\IntExtensions.cs" />
+    <Compile Include="lib\Fleck\QueuedStream.cs" />
+    <Compile Include="lib\Fleck\ReadState.cs" />
+    <Compile Include="lib\Fleck\RequestParser.cs" />
+    <Compile Include="lib\Fleck\SocketWrapper.cs" />
+    <Compile Include="lib\Fleck\SubProtocolNegotiationFailureException.cs" />
+    <Compile Include="lib\Fleck\SubProtocolNegotiator.cs" />
+    <Compile Include="lib\Fleck\WebSocketConnection.cs" />
+    <Compile Include="lib\Fleck\WebSocketConnectionInfo.cs" />
+    <Compile Include="lib\Fleck\WebSocketException.cs" />
+    <Compile Include="lib\Fleck\WebSocketHttpRequest.cs" />
+    <Compile Include="lib\Fleck\WebSocketServer.cs" />
+    <Compile Include="lib\Fleck\WebSocketStatusCodes.cs" />
     <Compile Include="lib\MessageShark\CustomBinary.cs" />
     <Compile Include="lib\MessageShark\CustomBinary.Deserializer.cs" />
     <Compile Include="lib\MessageShark\CustomBinary.IL.Deserialize.cs" />
@@ -599,9 +626,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dll\ReadMe.txt" />
+    <Content Include="lib\Fleck\ReadMe.txt" />
     <Content Include="lib\NAudio\Changes.xml" />
     <Content Include="lib\Salar.Bois\TODO.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
