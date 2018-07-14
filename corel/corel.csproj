@@ -586,6 +586,8 @@
     <Compile Include="lib\NHTTP\LogManager.cs" />
     <Compile Include="lib\NHTTP\NHttpException.cs" />
     <Compile Include="lib\NHTTP\ProtocolException.cs" />
+    <Compile Include="lib\_Core\ObjectKeepAlive.cs" />
+    <Compile Include="lib\_Core\ReadOnlyList.cs" />
     <Compile Include="lib\RPC\Enums.cs" />
     <Compile Include="lib\RPC\Interop\RpcApi.cs" />
     <Compile Include="lib\RPC\Interop\RpcClientInfo.cs" />
@@ -621,9 +623,13 @@
     <Compile Include="lib\Salar.Bois\ReflectionHelper.cs" />
     <Compile Include="lib\System.Threading\ReaderWriterLockSlimExtensions.cs" />
     <Compile Include="lib\System.Threading\ReadWriteLockSlimExtend.cs" />
-    <Compile Include="lib\Tuple\IStructuralComparable.cs" />
-    <Compile Include="lib\Tuple\IStructuralEquatable.cs" />
-    <Compile Include="lib\Tuple\Tuple.cs" />
+    <Compile Include="lib\_Core\TempDirectory.cs" />
+    <Compile Include="lib\_Core\TempFile.cs" />
+    <Compile Include="lib\_Core\TimeoutAction.cs" />
+    <Compile Include="lib\_Core\Tuple\IStructuralComparable.cs" />
+    <Compile Include="lib\_Core\Tuple\IStructuralEquatable.cs" />
+    <Compile Include="lib\_Core\Tuple\Tuple.cs" />
+    <Compile Include="lib\_Core\WeakReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -660,6 +666,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\Fleck\_demo\" />
+    <Folder Include="lib\_Core\_demo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
