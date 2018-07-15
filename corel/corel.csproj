@@ -114,6 +114,7 @@
     <Compile Include="lib\Fleck\WebSocketHttpRequest.cs" />
     <Compile Include="lib\Fleck\WebSocketServer.cs" />
     <Compile Include="lib\Fleck\WebSocketStatusCodes.cs" />
+    <Compile Include="lib\_Core\SegmentedMemoryStream.cs" />
     <Compile Include="lib\IpcChannel\IIpcChannelRegistrar.cs" />
     <Compile Include="lib\IpcChannel\IpcChannelRegistrar.cs" />
     <Compile Include="lib\IpcChannel\IpcEvent.cs" />
@@ -607,7 +608,7 @@
     <Compile Include="lib\NHTTP\LogManager.cs" />
     <Compile Include="lib\NHTTP\NHttpException.cs" />
     <Compile Include="lib\NHTTP\ProtocolException.cs" />
-    <Compile Include="lib\Processes\ArgumentList.cs" />
+    <Compile Include="lib\_Core\ArgumentList.cs" />
     <Compile Include="lib\Processes\AssemblyRunner.cs" />
     <Compile Include="lib\Processes\FileUtils.cs" />
     <Compile Include="lib\Processes\IRunner.cs" />
