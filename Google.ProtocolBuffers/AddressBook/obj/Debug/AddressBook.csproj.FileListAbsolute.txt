@@ -1,0 +1,5 @@
+E:\corel\build\AddressBookDemo.exe.config
+E:\corel\build\AddressBookDemo.exe
+E:\corel\build\AddressBookDemo.pdb
+E:\corel\Google.ProtocolBuffers\AddressBook\obj\Debug\AddressBookDemo.exe
+E:\corel\Google.ProtocolBuffers\AddressBook\obj\Debug\AddressBookDemo.pdb

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conso1", "test\conso1\conso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoGen", "Google.ProtocolBuffers\ProtoGen\ProtoGen.csproj", "{250ADE34-82FD-4BAE-86D5-985FBE589C4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook", "Google.ProtocolBuffers\AddressBook\AddressBook.csproj", "{A31F5FB2-4FF3-432A-B35B-5CD203606311}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{250ADE34-82FD-4BAE-86D5-985FBE589C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{250ADE34-82FD-4BAE-86D5-985FBE589C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{250ADE34-82FD-4BAE-86D5-985FBE589C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A31F5FB2-4FF3-432A-B35B-5CD203606311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A31F5FB2-4FF3-432A-B35B-5CD203606311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A31F5FB2-4FF3-432A-B35B-5CD203606311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A31F5FB2-4FF3-432A-B35B-5CD203606311}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,3 +37,11 @@ build/ProtoGen.pdb
 build/ProtoGen.vshost.exe
 build/ProtoGen.vshost.exe.config
 build/ProtoGen.vshost.exe.manifest
+build/AddressBookDemo.vshost.exe.config
+build/AddressBookDemo.vshost.exe
+build/AddressBookDemo.pdb
+build/AddressBookDemo.exe.config
+build/AddressBookDemo.exe
+build/AddressBook.vshost.exe.manifest
+build/AddressBook.vshost.exe.config
+build/addressbook.data
