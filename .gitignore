@@ -46,3 +46,7 @@ build/AddressBook.vshost.exe.manifest
 build/AddressBook.vshost.exe.config
 build/addressbook.data
 Google.ProtocolBuffers/ProtoGen/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Google.ProtocolBuffers/ProtoGen/obj/Debug/ProtoGen.pdb
+Google.ProtocolBuffers/ProtoGen/obj/Debug/ProtoGen.exe
+Google.ProtocolBuffers/ProtoGen/obj/Debug/ProtoGen.csprojResolveAssemblyReference.cache
+Google.ProtocolBuffers/ProtoGen/obj/Debug/ProtoGen.csproj.FileListAbsolute.txt
