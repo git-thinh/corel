@@ -25,3 +25,8 @@ corel/obj/Debug/corel.csproj.CoreCompileInputs.cache
 build/conso1.exe
 build/conso1.pdb
 build/conso1.vshost.exe
+test/conso1/obj/Debug/conso1.pdb
+test/conso1/obj/Debug/conso1.exe
+test/conso1/obj/Debug/conso1.csprojResolveAssemblyReference.cache
+test/conso1/obj/Debug/conso1.csproj.FileListAbsolute.txt
+test/conso1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
