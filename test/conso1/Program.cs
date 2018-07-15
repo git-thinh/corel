@@ -11,7 +11,8 @@ namespace conso1
         {
             //IpcChannel._test_IpcChannel.RUN();
             //Rpc._test_Rpc.RUN();
-            Google.ProtocolBuffers._test.RUN();
+            //Google.ProtocolBuffers._test.RUN_1();
+            Google.ProtocolBuffers._test.RUN_2();
 
             /////////////////////////////////////////
             Console.WriteLine("Enter to exit...");

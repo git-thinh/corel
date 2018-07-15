@@ -1,5 +1,4 @@
-﻿using IpcChannel;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +8,18 @@ namespace Google.ProtocolBuffers
 {
    public class _test
     {
-        public static void RUN()
+        public static void RUN_2()
+        {
+
+
+            /////////////////////////////////////////
+            /// FREE RESOURCE
+
+            Console.WriteLine("Enter to exit...");
+            Console.ReadLine();
+        }
+
+        public static void RUN_1()
         {
 
             string addressBookFile = "addressbook.data";

@@ -174,8 +174,8 @@
   <ItemGroup>
     <Content Include="lib\IpcChannel\ReadMe.txt" />
     <Content Include="lib\Rpc\ReadMe.txt" />
+    <Content Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\_test\_run_test\ReadMe.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
