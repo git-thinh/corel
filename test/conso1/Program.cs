@@ -10,7 +10,8 @@ namespace conso1
         static void Main(string[] args)
         {
             //IpcChannel._test_IpcChannel.RUN();
-            Rpc._test_Rpc.RUN();
+            //Rpc._test_Rpc.RUN();
+            Google.ProtocolBuffers._test.RUN();
 
             /////////////////////////////////////////
             Console.WriteLine("Enter to exit...");
