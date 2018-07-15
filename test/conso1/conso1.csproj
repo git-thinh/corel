@@ -51,11 +51,37 @@
     <Compile Include="lib\IpcChannel\base\MutexLock.cs" />
     <Compile Include="lib\IpcChannel\base\WaitAndContinueList.cs" />
     <Compile Include="lib\IpcChannel\base\WaitAndContinueWorker.cs" />
+    <Compile Include="lib\IpcChannel\_test\_run.cs" />
+    <Compile Include="lib\Rpc\Enums.cs" />
+    <Compile Include="lib\Rpc\Interop\RpcApi.cs" />
+    <Compile Include="lib\Rpc\Interop\RpcClientInfo.cs" />
+    <Compile Include="lib\Rpc\Interop\RpcHandle.cs" />
+    <Compile Include="lib\Rpc\Interop\StructPtr.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\COMM_FAULT_OFFSETS.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\MIDL_SERVER_INFO.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\MIDL_STUB_DESC.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\RPC_CALL_ATTRIBUTES_V2.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\RPC_CLIENT_INTERFACE.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\RPC_DISPATCH_TABLE.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\RPC_PROTSEQ_ENDPOINT.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\RPC_SERVER_INTERFACE.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\RPC_SYNTAX_IDENTIFIER.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\RPC_VERSION.cs" />
+    <Compile Include="lib\Rpc\Interop\Structs\SEC_WINNT_AUTH_IDENTITY.cs" />
+    <Compile Include="lib\Rpc\Interop\UsageCounter.cs" />
+    <Compile Include="lib\Rpc\IRpcClientInfo.cs" />
+    <Compile Include="lib\Rpc\RpcClientApi.cs" />
+    <Compile Include="lib\Rpc\RpcException.cs" />
+    <Compile Include="lib\Rpc\RpcServerApi.cs" />
+    <Compile Include="lib\Rpc\Check.cs" />
+    <Compile Include="lib\Rpc\TraceLog.cs" />
+    <Compile Include="lib\Rpc\_test\_run.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\IpcChannel\ReadMe.txt" />
+    <Content Include="lib\Rpc\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
