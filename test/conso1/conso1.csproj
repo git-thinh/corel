@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>CS3021</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -76,6 +77,91 @@
     <Compile Include="lib\Rpc\Check.cs" />
     <Compile Include="lib\Rpc\TraceLog.cs" />
     <Compile Include="lib\Rpc\_test\_run.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\AbstractBuilder.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\AbstractBuilderLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\AbstractMessage.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\AbstractMessageLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ByteString.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\CodedInputStream.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\CodedOutputStream.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Collections\Dictionaries.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Collections\Enumerables.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Collections\IPopsicleList.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Collections\Lists.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Collections\PopsicleList.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Collections\ReadOnlyDictionary.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Delegates.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\CSharpOptions.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\DescriptorProtoFile.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\IDescriptorProto.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\PartialClasses.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorBase.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorPool.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorUtil.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorValidationException.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\EnumDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\EnumValueDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FieldDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FieldMappingAttribute.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FieldType.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FileDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\IDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\IndexedDescriptorBase.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\MappedType.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\MessageDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\MethodDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\PackageDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\ServiceDescriptor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\DynamicMessage.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\EnumLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ExtendableBuilder.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ExtendableBuilderLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ExtendableMessage.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ExtendableMessageLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ExtensionInfo.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ExtensionRegistry.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ExtensionRegistryLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\FieldAccessorTable.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\IFieldAccessor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\ReflectionUtil.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\RepeatedEnumAccessor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\RepeatedMessageAccessor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\RepeatedPrimitiveAccessor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\SingleEnumAccessor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\SingleMessageAccessor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\SinglePrimitiveAccessor.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\FieldSet.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedBuilder.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedBuilderLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedExtensionBase.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedExtensionLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedMessage.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedMessageLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedRepeatExtension.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\GeneratedSingleExtension.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\IBuilder.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\IBuilderLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\IMessage.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\IMessageLite.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\InvalidProtocolBufferException.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\IRpcChannel.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\IRpcController.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\IService.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\MessageStreamIterator.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\MessageStreamWriter.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\MessageUtil.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\NameHelpers.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\RpcUtil.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\SilverlightCompatibility.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\SortedList.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\TextFormat.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\TextGenerator.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\TextTokenizer.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\ThrowHelper.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\UninitializedMessageException.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\UnknownField.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\UnknownFieldSet.cs" />
+    <Compile Include="lib\Serialization\Google.ProtocolBuffers.0.9.1\WireFormat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

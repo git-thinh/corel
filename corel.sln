@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "corel", "corel\corel.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conso1", "test\conso1\conso1.csproj", "{689D602F-86D1-4F29-B2C8-0248B61A7AFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoGen", "Google.ProtocolBuffers\ProtoGen\ProtoGen.csproj", "{250ADE34-82FD-4BAE-86D5-985FBE589C4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{689D602F-86D1-4F29-B2C8-0248B61A7AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{689D602F-86D1-4F29-B2C8-0248B61A7AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{689D602F-86D1-4F29-B2C8-0248B61A7AFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{250ADE34-82FD-4BAE-86D5-985FBE589C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{250ADE34-82FD-4BAE-86D5-985FBE589C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{250ADE34-82FD-4BAE-86D5-985FBE589C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{250ADE34-82FD-4BAE-86D5-985FBE589C4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

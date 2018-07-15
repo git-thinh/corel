@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{250ADE34-82FD-4BAE-86D5-985FBE589C4A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Google.ProtocolBuffers.ProtoGen</RootNamespace>
+    <AssemblyName>ProtoGen</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\Google.ProtocolBuffers.ProtoGen.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <StartupObject>Google.ProtocolBuffers.ProtoGen.ProgramPreprocess</StartupObject>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>CS3021</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DescriptorUtil.cs" />
+    <Compile Include="EnumFieldGenerator.cs" />
+    <Compile Include="EnumGenerator.cs" />
+    <Compile Include="ExtensionGenerator.cs" />
+    <Compile Include="FieldGeneratorBase.cs" />
+    <Compile Include="Func.cs" />
+    <Compile Include="IFieldSourceGenerator.cs" />
+    <Compile Include="ISourceGenerator.cs" />
+    <Compile Include="MessageFieldGenerator.cs" />
+    <Compile Include="MessageGenerator.cs" />
+    <Compile Include="PrimitiveFieldGenerator.cs" />
+    <Compile Include="ProgramPreprocess.cs" />
+    <Compile Include="RepeatedEnumFieldGenerator.cs" />
+    <Compile Include="RepeatedMessageFieldGenerator.cs" />
+    <Compile Include="RepeatedPrimitiveFieldGenerator.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\AbstractBuilder.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\AbstractBuilderLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\AbstractMessage.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\AbstractMessageLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ByteString.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\CodedInputStream.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\CodedOutputStream.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Collections\Dictionaries.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Collections\Enumerables.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Collections\IPopsicleList.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Collections\Lists.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Collections\PopsicleList.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Collections\ReadOnlyDictionary.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Delegates.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\CSharpOptions.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\DescriptorProtoFile.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\IDescriptorProto.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\DescriptorProtos\PartialClasses.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorBase.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorPool.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorUtil.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\DescriptorValidationException.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\EnumDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\EnumValueDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FieldDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FieldMappingAttribute.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FieldType.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\FileDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\IDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\IndexedDescriptorBase.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\MappedType.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\MessageDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\MethodDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\PackageDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\Descriptors\ServiceDescriptor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\DynamicMessage.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\EnumLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ExtendableBuilder.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ExtendableBuilderLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ExtendableMessage.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ExtendableMessageLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ExtensionInfo.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ExtensionRegistry.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ExtensionRegistryLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\FieldAccessorTable.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\IFieldAccessor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\ReflectionUtil.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\RepeatedEnumAccessor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\RepeatedMessageAccessor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\RepeatedPrimitiveAccessor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\SingleEnumAccessor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\SingleMessageAccessor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldAccess\SinglePrimitiveAccessor.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\FieldSet.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedBuilder.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedBuilderLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedExtensionBase.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedExtensionLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedMessage.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedMessageLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedRepeatExtension.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\GeneratedSingleExtension.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\IBuilder.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\IBuilderLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\IMessage.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\IMessageLite.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\InvalidProtocolBufferException.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\IRpcChannel.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\IRpcController.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\IService.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\MessageStreamIterator.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\MessageStreamWriter.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\MessageUtil.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\NameHelpers.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\RpcUtil.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\SilverlightCompatibility.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\SortedList.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\TextFormat.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\TextGenerator.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\TextTokenizer.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\ThrowHelper.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\UninitializedMessageException.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\UnknownField.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\UnknownFieldSet.cs" />
+    <Compile Include="Serialization\Google.ProtocolBuffers.0.9.1\WireFormat.cs" />
+    <Compile Include="ServiceGenerator.cs" />
+    <Compile Include="DependencyResolutionException.cs" />
+    <Compile Include="Generator.cs" />
+    <Compile Include="GeneratorOptions.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="InvalidOptionsException.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SourceGeneratorBase.cs" />
+    <Compile Include="SourceGenerators.cs" />
+    <Compile Include="UmbrellaClassGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Google.ProtocolBuffers.ProtoGen.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

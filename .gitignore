@@ -31,3 +31,9 @@ test/conso1/obj/Debug/conso1.csprojResolveAssemblyReference.cache
 test/conso1/obj/Debug/conso1.csproj.FileListAbsolute.txt
 test/conso1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 test/conso1/conso1.csproj.user
+build/ProtoGen.exe
+build/ProtoGen.exe.config
+build/ProtoGen.pdb
+build/ProtoGen.vshost.exe
+build/ProtoGen.vshost.exe.config
+build/ProtoGen.vshost.exe.manifest
